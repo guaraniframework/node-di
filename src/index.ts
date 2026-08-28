@@ -12,7 +12,7 @@ export { Optional } from './lib/decorators/optional.decorator';
 // #endregion
 
 // #region Dependency Injection Container
-export { DependencyInjectionContainer } from './lib/dependency-injection.container';
+export { Container, DependencyInjectionContainer, getContainer } from './lib/dependency-injection.container';
 // #endregion
 
 // #region Errors
