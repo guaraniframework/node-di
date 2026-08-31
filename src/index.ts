@@ -31,6 +31,8 @@ export { isValueProvider, type ValueProvider } from './lib/providers/value/value
 // #endregion
 
 // #region Types
+export { type AbstractConstructor } from './lib/types/abstract-constructor.interface';
+export { type Constructor } from './lib/types/constructor.interface';
 export { type Factory } from './lib/types/factory.type';
 export { type InjectableToken, isInjectableToken } from './lib/types/injectable-token.type';
 export { Lifecycle } from './lib/types/lifecycle.enum';
