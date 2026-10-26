@@ -46,6 +46,76 @@ export class DependencyInjectionContainer {
   }
 
   /**
+   * Retrieves the requested Token registered at the Container.
+   *
+   * @param token Token to be retrieved.
+   * @throws {TokenNotRegisteredError} The provided Token is not registered.
+   * @returns Retrieved Token.
+   */
+  public get<T extends unknown>(token: InjectableToken<T>): T | InjectableToken<T> {
+    const provider = this.registry.get(token).provider;
+
+    switch (true) {
+      case isClassProvider<T>(provider):
+        return provider.useClass;
+
+      case isFactoryProvider<T>(provider):
+        return provider.useFactory;
+
+      case isTokenProvider<T>(provider):
+        return provider.useToken;
+
+      case isValueProvider<T>(provider):
+        return provider.useValue;
+
+      // istanbul ignore next
+      default:
+        throw new InvalidProviderError(provider);
+    }
+  }
+
+  /**
+   * Retrieves all entries of the the requested Token registered at the Container.
+   *
+   * @param token Token entries to be retrieved.
+   * @throws {TokenNotRegisteredError} The provided Token is not registered.
+   * @returns Retrieved Token entries.
+   */
+  public getAll<T>(token: InjectableToken<T>): (T | InjectableToken<T>)[] {
+    return this.registry.getAll(token).map((binding) => {
+      const provider = binding.provider;
+
+      switch (true) {
+        case isClassProvider<T>(provider):
+          return provider.useClass;
+
+        case isFactoryProvider<T>(provider):
+          return provider.useFactory;
+
+        case isTokenProvider<T>(provider):
+          return provider.useToken;
+
+        case isValueProvider<T>(provider):
+          return provider.useValue;
+
+        // istanbul ignore next
+        default:
+          throw new InvalidProviderError(provider);
+      }
+    });
+  }
+
+  /**
+   * Checks if the provided Token is registered at the Container.
+   *
+   * @param token Token to be checked.
+   * @returns Whether or not the Token is registered at the Container.
+   */
+  public has<T>(token: InjectableToken<T>): boolean {
+    return this.registry.has(token);
+  }
+
+  /**
    * Resolves the requested Token.
    *
    * The Token **MUST** be known by the Container.

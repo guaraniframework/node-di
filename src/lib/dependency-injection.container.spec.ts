@@ -43,6 +43,65 @@ describe('Dependency Injection Container', () => {
     });
   });
 
+  describe('get()', () => {
+    it('should return the Class Provider of the requested Token.', () => {
+      class Foo {}
+
+      container.bind(Foo).toSelf();
+      expect(container.get(Foo)).toBe(Foo);
+    });
+
+    it('should return the Factory Provider of the requested Token.', () => {
+      const factory = () => 1;
+
+      container.bind('Foo').toFactory(factory);
+      expect(container.get('Foo')).toBe(factory);
+    });
+
+    it('should return the Token Provider of the requested Token.', () => {
+      class Foo {}
+      class Bar {}
+
+      container.bind(Foo).toToken(Bar);
+      expect(container.get(Foo)).toBe(Bar);
+    });
+
+    it('should return the Value Provider of the requested Token.', () => {
+      const value = {};
+
+      container.bind('Foo').toValue(value);
+      expect(container.get('Foo')).toBe(value);
+    });
+  });
+
+  describe('getAll()', () => {
+    it('should return the Class Provider of the requested Token.', () => {
+      class Foo {}
+      class Bar {}
+
+      const factory = () => 1;
+      const value = {};
+
+      container.bind(Foo).toSelf();
+      container.bind(Foo).toToken(Bar);
+      container.bind(Foo).toFactory(factory);
+      container.bind(Foo).toValue(value);
+
+      expect(container.getAll(Foo)).toStrictEqual([Foo, Bar, factory, value]);
+    });
+  });
+
+  describe('has()', () => {
+    it('should return false when the provided token is not registered.', () => {
+      expect(container.has<string>('Foo')).toBeFalse();
+    });
+
+    it('should return true when the provided token is registered.', () => {
+      container.bind('Foo').toValue(123);
+      expect(container.has<string>('Foo')).toBeTrue();
+    });
+  });
+
   describe('resolve()', () => {
     it('should reject when the token is not registered.', () => {
       class Foo {}

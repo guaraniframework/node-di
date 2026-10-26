@@ -1,6 +1,6 @@
 {
   "name": "@guarani/di",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Dependency Injection Framework for Guarani.",
   "license": "MIT",
   "homepage": "https://github.com/guaraniframework/node-di#readme",
