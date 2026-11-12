@@ -1,7 +1,7 @@
+import { AbstractConstructor, Constructor } from '@guarani/primitives/function';
+
 import { PARAM_TOKENS, PROP_TOKENS } from '../metadata/metadata.keys';
 import { setTokenDescriptor } from '../metadata/set-token-descriptor';
-import { AbstractConstructor } from '../types/abstract-constructor.interface';
-import { Constructor } from '../types/constructor.interface';
 
 /**
  * Marks the dependency as **optional**.

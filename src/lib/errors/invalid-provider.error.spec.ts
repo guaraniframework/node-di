@@ -1,4 +1,4 @@
-import { jsonStringify } from '@guarani/primitives';
+import { jsonStringify } from '@guarani/primitives/json';
 
 import { InvalidProviderError } from './invalid-provider.error';
 

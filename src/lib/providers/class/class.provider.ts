@@ -1,5 +1,4 @@
-import { AbstractConstructor } from '../../types/abstract-constructor.interface';
-import { Constructor } from '../../types/constructor.interface';
+import { AbstractConstructor, Constructor } from '@guarani/primitives/function';
 
 /**
  * Denotes a Class Provider.

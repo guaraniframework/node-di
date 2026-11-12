@@ -1,5 +1,5 @@
-import { AbstractConstructor } from './abstract-constructor.interface';
-import { Constructor } from './constructor.interface';
+import { AbstractConstructor, Constructor } from '@guarani/primitives/function';
+
 import { LazyToken } from './lazy-token';
 
 /**

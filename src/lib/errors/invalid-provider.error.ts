@@ -1,4 +1,4 @@
-import { jsonStringify } from '@guarani/primitives';
+import { jsonStringify } from '@guarani/primitives/json';
 
 import { DependencyInjectionError } from './dependency-injection.error';
 
@@ -24,7 +24,7 @@ export class InvalidProviderError extends DependencyInjectionError {
    * @param obj Object used as a Provider.
    * @returns String description of the object.
    */
-  private static getSerializedObject(obj: unknown): string {
+  private static getSerializedObject(obj: any): string {
     switch (typeof obj) {
       case 'bigint':
         return obj.toString();

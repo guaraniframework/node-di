@@ -1,3 +1,5 @@
+import { AbstractConstructor, Constructor } from '@guarani/primitives/function';
+
 import { Binding } from './bindings/binding/binding';
 import { ProviderBinding } from './bindings/provider/provider.binding';
 import { InvalidProviderError } from './errors/invalid-provider.error';
@@ -9,8 +11,6 @@ import { Provider } from './providers/provider';
 import { isTokenProvider } from './providers/token/token.provider';
 import { isValueProvider } from './providers/value/value.provider';
 import { Registry } from './registry/registry';
-import { AbstractConstructor } from './types/abstract-constructor.interface';
-import { Constructor } from './types/constructor.interface';
 import { InjectableToken } from './types/injectable-token.type';
 import { LazyToken } from './types/lazy-token';
 import { Lifecycle } from './types/lifecycle.enum';

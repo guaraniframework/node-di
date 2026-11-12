@@ -1,5 +1,5 @@
-import { AbstractConstructor } from '../../types/abstract-constructor.interface';
-import { Constructor } from '../../types/constructor.interface';
+import { AbstractConstructor, Constructor } from '@guarani/primitives/function';
+
 import { Factory } from '../../types/factory.type';
 import { InjectableToken } from '../../types/injectable-token.type';
 import { Binding } from '../binding/binding';

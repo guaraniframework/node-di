@@ -1,7 +1,7 @@
+import { AbstractConstructor, Constructor } from '@guarani/primitives/function';
+
 import { PARAM_TOKENS, PARAM_TYPES } from '../metadata/metadata.keys';
 import { TokenDescriptor } from '../metadata/token.descriptor';
-import { AbstractConstructor } from '../types/abstract-constructor.interface';
-import { Constructor } from '../types/constructor.interface';
 
 /**
  * Marks the decorated class as an Injectable Token to be resolved by the Dependency Injection Container.
